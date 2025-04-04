@@ -8,11 +8,11 @@ app = Flask(__name__)
 
 # MySQL Database Connection using MySQLdb
 db = MySQLdb.connect(
-    host="localhost",
-    port=3306,  # Default MySQL port
-    user="root",  # Replace with your local MySQL username
-    password="theanimesh2005",  # Replace with your local MySQL password
-    database="hospital_db"  # Replace with the name of your local database
+    host="tramway.proxy.rlwy.net",
+    port=54114,
+    user="root",
+    password="hOQnmWNoBVBYyjjWlZrzvZvCMApaZIvT",
+    database="railway"
 )
 
 @app.route('/', methods=['GET', 'POST'])
