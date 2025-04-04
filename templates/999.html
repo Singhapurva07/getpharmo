@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/999.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="checkout-card">
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="plan-details">
+                    <span class="plan-name">Basic Plan</span>
+                    <span class="plan-price">₹999<span class="period">/month</span></span>
+                </div>
+                <div class="divider"></div>
+                <div class="total">
+                    <span>Total Amount</span>
+                    <span class="total-amount">₹999</span>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <h2>Select Payment Method</h2>
+                
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" checked>
+                        <div class="option-content">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6963/6963703.png" alt="UPI">
+                            <span>UPI Payment</span>
+                        </div>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment">
+                        <div class="option-content">
+                            <img src="https://cdn-icons-png.flaticon.com/512/179/179457.png" alt="Credit Card">
+                            <span>Credit Card</span>
+                        </div>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment">
+                        <div class="option-content">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2057/2057901.png" alt="Net Banking">
+                            <span>Net Banking</span>
+                        </div>
+                    </label>
+                </div>
+
+                <button class="proceed-btn">
+                    Proceed to Pay
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

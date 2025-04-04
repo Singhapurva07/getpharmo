@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Error Prevention Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/servicesmid.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="animate__animated animate__fadeIn">
+            <h1>Medication Error Prevention Guide</h1>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='images/error.png') }}" alt="Medication safety and error prevention" class="main-image">
+            </div>
+        </header>
+
+        <section class="overview animate__animated animate__fadeInUp">
+            <h2>Overview</h2>
+            <p>Medication errors can lead to serious health risks, including ineffective treatment, worsening conditions, or severe side effects. Mistakes in prescribing, dispensing, or consuming medication happen more frequently than expected. Our advanced monitoring system helps identify and prevent such errors, ensuring that every patient receives safe and accurate treatment.</p>
+        </section>
+
+        <section class="error-types animate__animated animate__fadeInUp">
+            <h2>Types of Medication Errors</h2>
+            <p>Medication errors can occur at various stages, including prescribing, dispensing, and administering drugs. Some common errors include:</p>
+            <div class="interaction-types">
+                <div class="interaction-card">
+                    <div class="card-icon">⚖️</div>
+                    <h3>Incorrect Dosage</h3>
+                    <p>Taking too much or too little of a medication.</p>
+                </div>
+                <div class="interaction-card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Confusing Similar Drugs</h3>
+                    <p>Some medications have similar names or packaging, leading to accidental mix-ups.</p>
+                </div>
+                <div class="interaction-card">
+                    <div class="card-icon">💉</div>
+                    <h3>Wrong Administration Method</h3>
+                    <p>Medications meant for injection should not be taken orally, and vice versa.</p>
+                </div>
+                <div class="interaction-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Failure to Monitor Side Effects</h3>
+                    <p>Some drugs require close monitoring to prevent adverse effects.</p>
+                </div>
+                <div class="interaction-card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Duplicate Therapy</h3>
+                    <p>Taking two medications with the same active ingredients, leading to overdosing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="prevention animate__animated animate__fadeInUp">
+            <h2>How We Help Prevent Medication Errors</h2>
+            <ul class="fancy-list">
+                <li><strong>AI-Powered Error Detection:</strong> Our system scans prescriptions for potential mistakes, ensuring accuracy.</li>
+                <li><strong>Pharmacist Verification:</strong> A professional review of medications before dispensing.</li>
+                <li><strong>Guidance on Safe Medication Practices:</strong> Educating patients on proper usage to minimize errors.</li>
+                <li><strong>Alerts & Notifications:</strong> Reminders to take medications at the right time and track side effects.</li>
+            </ul>
+        </section>
+
+        <section class="benefits animate__animated animate__fadeInUp">
+            <h2>Benefits of Our Service</h2>
+            <div class="checklist">
+                <p>✔️ Reduces the risk of incorrect dosages.</p>
+                <p>✔️ Prevents harmful drug interactions.</p>
+                <p>✔️ Ensures compliance with prescribed treatments.</p>
+                <p>✔️ Enhances patient safety and confidence in medication management.</p>
+            </div>
+        </section>
+
+        <section class="self-help animate__animated animate__fadeInUp">
+            <h2>How You Can Avoid Medication Errors</h2>
+            <div class="checklist highlight">
+                <p>✔️ Always double-check prescriptions before purchasing medications.</p>
+                <p>✔️ Read instructions carefully and follow the recommended dosage.</p>
+                <p>✔️ Use a pill organizer to keep track of medications.</p>
+                <p>✔️ Ask a pharmacist if you're unsure about how to take your medication properly.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

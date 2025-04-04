@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Getpharmo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-section animate__animated animate__fadeInLeft">
+            <img src="{{ url_for('static', filename='images/FOUNDER.jpg') }}" alt="Founder" class="founder-image">
+        </div>
+        
+        <div class="content-section animate__animated animate__fadeInRight">
+            <header>
+                <h1>About Us</h1>
+            </header>
+            
+            <main class="content">
+                <div class="about-text">
+                    <p>
+                        We are India's first <strong>Medication Opinion Centre</strong>, revolutionizing the way patients receive medication feedback—an area where India has yet to catch up. Backed by <strong>qualified Doctors of Pharmacy</strong>, Getpharmo is on a mission to become the world's leading medication consultancy.
+                    </p>
+                    
+                    <p>
+                        In today's fast-evolving healthcare landscape, we bridge the gap between <strong>security and accessibility</strong>. Our platform ensures medical records are not only <strong>highly secure</strong> but also <strong>effortlessly accessible</strong>, empowering both patients and providers.
+                    </p>
+                    
+                    <p>
+                        Founded by <strong>healthcare professionals and security experts</strong>, we uphold the <strong>highest standards of data protection</strong>, making healthcare access seamless, reliable, and future-ready.
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

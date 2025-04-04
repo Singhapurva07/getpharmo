@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getpharmo - Pharmacology Clinic</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
+      </div>
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu-toggle">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="video-container">
+      <video autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='videos/bg.mp4') }}" type="video/mp4">
+
+      </video>
+      <div class="overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="animate-text">Secure Your Medical Records Digitally</h1>
+      <p>Advanced encryption and seamless access to your health information</p>
+      <a href="#services" class="btn primary-btn">Explore Services</a>
+    </div>
+    <div class="wave-divider">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <h2>Our Services</h2>
+        <p>Comprehensive digital solutions for healthcare records</p>
+      </div>
+      <div class="service-cards">
+        <div class="card reveal-slide-left">
+          <div class="card-image">
+            <img src="{{ url_for('static', filename='images/DRUG.jpg') }}" alt="Drug interaction consultation" >
+          </div>
+          <div class="icon">
+            <img src="{{ url_for('static', filename='images/document-icon.svg') }}" alt="Document Icon">
+          </div>
+          <h3>Responding to questions about drug interactions</h3>
+          <p>Our expert pharmacists provide detailed information about potential drug interactions to ensure your safety.</p>
+          <a href="{{ url_for('services_left') }}" class="btn teal-btn">Learn More</a>
+        </div>
+        <div class="card reveal-slide-up">
+          <div class="card-image">
+            <img src="{{ url_for('static', filename='images/error.png') }}" alt="Medication error prevention" >
+          </div>
+          <div class="icon">
+            <img src="{{ url_for('static', filename='images/shield-icon.svg') }}" alt="Shield Icon">
+          </div>
+          <h3>Services to become aware of possible medication errors</h3>
+          <p>We help identify and prevent medication errors through our advanced monitoring system.</p>
+          <a href="{{ url_for('services') }}" class="btn teal-btn">Learn More</a>
+        </div>
+        <div class="card reveal-slide-right">
+          <div class="card-image">
+            <img src="{{ url_for('static', filename='images/insight.jpg') }}" alt="Medication usage insights" >
+          </div>
+          <div class="icon">
+            <img src="{{ url_for('static', filename='images/cloud-icon.svg') }}" alt="Cloud Icon">
+          </div>
+          <h3>Invaluable insights about the usage of prescribed medicine</h3>
+          <p>Get detailed insights on how to properly use your medications for maximum effectiveness.</p>
+          <a href="{{ url_for('services_right') }}" class="btn teal-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f8f9fa" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <h2>About Us</h2>
+        <p class="brand-name">Getpharmo</p>
+      </div>
+      <div class="about-content">
+        <div class="about-image reveal-slide-left">
+          <img src="{{ url_for('static', filename='images/didi.jpg') }}" alt="Dr. Manoj professional portrait"></div>
+        <div class="about-text reveal-slide-right">
+          <p>We are India's first medication opinion centre to provide exclusive medication feedback to patients, a sector where India lags at present. This company will be rapidly growing as the world's leading medication consultancy of qualified Doctor of Pharmacy.</p>
+          <p>At Getpharmo, we understand the importance of secure, accessible medical records in today's healthcare environment. Our platform bridges the gap between security and accessibility.</p>
+          <p>Founded by healthcare professionals and security experts, we've developed a system that meets the highest standards of data protection while ensuring seamless access for patients and providers.</p>
+          <a href="{{ url_for('about') }}" class="btn secondary-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ffffff" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,154.7C672,128,768,96,864,106.7C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <h2>Gallery</h2>
+        <p>Our Medical Moments</p>
+      </div>
+      
+      <div class="gallery-actions">
+        <button class="btn primary-btn add-btn">Add New Photo</button>
+      </div>
+  
+      <div class="gallery-grid">
+        <div class="gallery-item reveal-slide-left">
+          <img src="https://picsum.photos/300/200" alt="Medical Image">
+          <div class="gallery-overlay">
+            <button class="btn edit-btn">Edit</button>
+            <button class="btn delete-btn">Delete</button>
+          </div>
+        </div>
+        <div class="gallery-item reveal-slide-up">
+          <img src="https://picsum.photos/300/201" alt="Medical Image">
+          <div class="gallery-overlay">
+            <button class="btn edit-btn">Edit</button>
+            <button class="btn delete-btn">Delete</button>
+          </div>
+        </div>
+        <div class="gallery-item reveal-slide-right">
+          <img src="https://picsum.photos/300/202" alt="Medical Image">
+          <div class="gallery-overlay">
+            <button class="btn edit-btn">Edit</button>
+            <button class="btn delete-btn">Delete</button>
+          </div>
+        </div>
+        <div class="gallery-item reveal-fade">
+          <img src="https://picsum.photos/300/203" alt="Medical Image">
+          <div class="gallery-overlay">
+            <button class="btn edit-btn">Edit</button>
+            <button class="btn delete-btn">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="wave-divider">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ffffff" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,154.7C672,128,768,96,864,106.7C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <h2>Subscription Plans</h2>
+        <p>Choose the plan that fits your needs</p>
+      </div>
+      <div class="pricing-cards">
+        <div class="price-card reveal-slide-left">
+          <div class="price-header">
+            <h3>Basic</h3>
+            <div class="price">₹999<span>/month</span></div>
+          </div>
+          <div class="features">
+            <div class="feature"><span class="checkmark">✓</span> Secure record storage</div>
+            <div class="feature"><span class="checkmark">✓</span> Basic encryption</div>
+            <div class="feature"><span class="checkmark">✓</span> Mobile access</div>
+            <div class="feature inactive"><span class="checkmark">✓</span> Family sharing</div>
+            <div class="feature inactive"><span class="checkmark">✓</span> Provider integration</div>
+          </div>
+          <a href="{{ url_for('nine_nine_nine') }}" class="btn outline-btn">Choose Plan</a>
+        </div>
+        <div class="price-card featured reveal-slide-up">
+          <div class="price-header">
+            <h3>Professional</h3>
+            <div class="price">₹1,999<span>/month</span></div>
+          </div>
+          <div class="features">
+            <div class="feature"><span class="checkmark">✓</span> Secure record storage</div>
+            <div class="feature"><span class="checkmark">✓</span> Advanced encryption</div>
+            <div class="feature"><span class="checkmark">✓</span> Mobile access</div>
+            <div class="feature"><span class="checkmark">✓</span> Family sharing</div>
+            <div class="feature inactive"><span class="checkmark">✓</span> Provider integration</div>
+          </div>
+          <!-- ADDED: Choose Plan button for the middle pricing card -->
+          <a href="{{ url_for('one_nine_nine_nine') }}" class="btn primary-btn">Choose Plan</a>
+        </div>
+        <div class="price-card reveal-slide-right">
+          <div class="price-header">
+            <h3>Enterprise</h3>
+            <div class="price">₹2,999<span>/month</span></div>
+          </div>
+          <div class="features">
+            <div class="feature"><span class="checkmark">✓</span> Secure record storage</div>
+            <div class="feature"><span class="checkmark">✓</span> Military-grade encryption</div>
+            <div class="feature"><span class="checkmark">✓</span> Mobile access</div>
+            <div class="feature"><span class="checkmark">✓</span> Family sharing</div>
+            <div class="feature"><span class="checkmark">✓</span> Provider integration</div>
+          </div>
+          <a href="{{ url_for('two_nine_nine_nine') }}" class="btn outline-btn">Choose Plan</a>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f8f9fa" fill-opacity="1" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,117.3C960,128,1056,128,1152,106.7C1248,85,1344,43,1392,21.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <h2>Get in Touch</h2>
+        <p>We're here to help with your medication needs</p>
+      </div>
+      <div class="contact-container">
+<div class="contact-form reveal-slide-left">
+  <form>
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" required placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" required placeholder="Enter your phone number">
+    </div>
+    <div class="form-group">
+      <label for="subject">Select Subject</label>
+      <select id="subject" required>
+        <option value="" disabled selected>Choose a subject</option>
+        <option value="general">General Inquiry</option>
+        <option value="support">Medication Consultation</option>
+        <option value="billing">Billing Question</option>
+      </select>
+    </div>
+ <!-- This is a partial HTML update to add the "Send Message" button to the contact form -->
+<div class="form-group">
+  <label for="message">Your Message</label>
+  <textarea id="message" required placeholder="Type your message here"></textarea>
+</div>
+<button type="submit" class="btn primary-btn">Send Message</button>
+
+  </form>
+</div>
+        <div class="contact-info reveal-slide-right">
+          <div class="info-header">
+            <h3>Our Location</h3>
+          </div>
+          <p><strong>No.1, Bharathiyar Street,<br>Gandhi Nagar,<br>Avadi, Chennai 600 054.<br>Tamil Nadu, India</strong></p>
+          
+          <div class="info-header">
+            <h3>Phone Number</h3>
+          </div>
+          <p><strong>(+91) 98415 97435<br>(+91) 4442694710<br>(+91) 98409 27435</strong></p>
+          
+          <div class="info-header">
+            <h3>Email Address</h3>
+          </div>
+          <p><strong><a href="/cdn-cgi/l/email-protection#39625c5458505519494b564d5c5a4d5c5d64">[email&#160;protected]</a></strong></p>
+          
+          <div class="map-container">
+            <img src="{{ url_for('static', filename='images/map-location.webp') }}" alt="Office Location Map">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo">
+        </div>
+        <div class="footer-links">
+          <div class="link-group">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#home">About Us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="link-group">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Data Protection</a></li>
+              <li><a href="#">Compliance</a></li>
+            </ul>
+          </div>
+          <div class="link-group">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">System Status</a></li>
+              <li><a href="#">Report an Issue</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/facebook-icon.svg') }}" alt="Facebook"></a>
+          <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/twitter-icon.svg') }}" alt="Twitter"></a>
+          <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/linkedin-icon.svg') }}" alt="LinkedIn"></a>
+          <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/instagram-icon.svg') }}" alt="Instagram"></a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2023 Getpharmo Pharmacology Clinic. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Simple JavaScript for mobile menu toggle
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.body.classList.remove('mobile-menu-open');
+      });
+    });
+
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const revealElements = document.querySelectorAll('.reveal-fade, .reveal-slide-left, .reveal-slide-right, .reveal-slide-up');
+      
+      function checkReveal() {
+        const windowHeight = window.innerHeight;
+        const revealPoint = 150;
+        
+        revealElements.forEach(element => {
+          const revealTop = element.getBoundingClientRect().top;
+          
+          if (revealTop < windowHeight - revealPoint) {
+            element.classList.add('revealed');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', checkReveal);
+      checkReveal(); // Check on load
+      
+      // Set active nav link based on scroll position
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+      
+      function setActiveLink() {
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', setActiveLink);
+      setActiveLink(); // Check on load
+    });
+  </script>
+</body>
+</html>

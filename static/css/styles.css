@@ -1,0 +1,1410 @@
+/* Base Styles */
+:root {
+  --primary-blue: #0d6e8c;
+  --teal-accent: #00b4b3;
+  --off-white: #f8f9fa;
+  --light-gray: #e9ecef;
+  --medium-gray: #adb5bd;
+  --dark-gray: #495057;
+  --text-color: #212529;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-color);
+  background-color: var(--off-white);
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-blue);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+a:hover {
+  color: var(--teal-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn.primary-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+}
+/* Remove section header decorations */
+.section-header h2::after {
+  display: none !important;
+}
+
+/* Or if it's a specific button */
+.btn.primary-btn {
+  display: none !important;
+}
+
+/* Option 1: Nuclear approach - remove ALL "Explore Services" text */
+* {
+  background-image: none !important;
+}
+body *::before, 
+body *::after {
+  content: none !important;
+}
+
+/* Option 2: Remove specific button class */
+.hero-content .btn.primary-btn,
+.explore-services-btn {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Option 3: Remove pseudo-elements */
+.section-header::after,
+.hero-content::after {
+  display: none !important;
+}
+
+/* EDIT 2: Remove the small white design on front page */
+/* Remove wave dividers from hero section */
+.hero .wave-divider {
+  display: none;
+}
+
+section {
+  /* EDIT 3: Reduce spacing between sections */
+  padding: 3rem 0; /* Reduced from 6rem to 3rem */
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  text-align: center;
+  /* EDIT 3: Reduce spacing below section headers */
+  margin-bottom: 2rem; /* Reduced from 4rem to 2rem */
+}
+
+.section-header h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+  color: var(--primary-blue);
+}
+
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--teal-accent);
+}
+
+.section-header p {
+  color: var(--dark-gray);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.primary-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: 2px solid var(--primary-blue);
+}
+
+.primary-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 7px 15px rgba(13, 110, 140, 0.3);
+}
+
+.secondary-btn {
+  background-color: var(--teal-accent);
+  color: white;
+  border: 2px solid var(--teal-accent);
+}
+
+.secondary-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 7px 15px rgba(0, 180, 179, 0.3);
+}
+
+.teal-btn {
+  background-color: var(--teal-accent);
+  color: white;
+  border: 2px solid var(--teal-accent);
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+.teal-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 7px 15px rgba(0, 180, 179, 0.3);
+}
+
+.outline-btn {
+  background-color: transparent;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+}
+
+.outline-btn:hover {
+  background-color: var(--primary-blue);
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 7px 15px rgba(13, 110, 140, 0.3);
+}
+
+/* EDIT 2: Remove wave dividers */
+.wave-divider {
+  display: none; /* Hide all wave dividers */
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sm);
+  z-index: 1000;
+  transition: all var(--transition-normal);
+  height: 100px;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+header.scrolled {
+  background-color: white;
+  box-shadow: var(--shadow-md);
+  height: 80px;
+}
+
+.logo-container {
+  width: 150px;
+  height: 150px;
+  background: white;
+  border-radius: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-normal);
+  will-change: transform;
+}
+
+.header-logo {
+  width: 220px;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  transition: all var(--transition-normal);
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 180, 179, 0.2);
+}
+
+.desktop-nav ul {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.desktop-nav a {
+  color: var(--dark-gray);
+  font-weight: 600;
+  position: relative;
+  padding: 0.5rem 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--teal-accent);
+  transition: width var(--transition-normal);
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  color: var(--teal-accent);
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after {
+  width: 100%;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--primary-blue);
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: var(--transition-fast);
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 8px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 16px;
+}
+
+.mobile-menu-open .hamburger span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.mobile-menu-open .hamburger span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.mobile-menu-open .hamburger span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  background-color: white;
+  z-index: 999;
+  padding: 6rem 2rem 2rem;
+  box-shadow: var(--shadow-lg);
+  transition: right var(--transition-normal);
+}
+
+.mobile-menu-open .mobile-nav {
+  right: 0;
+}
+
+.mobile-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav a {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--light-gray);
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  color: var(--teal-accent);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13, 110, 140, 0.7);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+}
+
+.animate-text {
+  opacity: 0;
+  animation: fadeInUp 1s ease-in-out forwards;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeInUp 1s ease-in-out 0.3s forwards;
+}
+
+.hero-content .btn {
+  opacity: 0;
+  animation: fadeInUp 1s ease-in-out 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Services Section */
+.services {
+  background-color: white;
+  position: relative;
+  /* EDIT 3: Reduce bottom padding */
+  padding-bottom: 3rem; /* Reduced from 7rem to 3rem */
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+.card .icon {
+  margin: -30px auto 1rem;
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.card .icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.card h3 {
+  color: var(--primary-blue);
+  margin: 0 1.5rem 1rem;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+}
+
+.card p {
+  margin: 0 1.5rem 1.5rem;
+  padding: 0 1rem;
+}
+
+.card .btn {
+  margin: auto 1.5rem 1.5rem;
+}
+
+/* About Section */
+.about {
+  background-color: var(--off-white);
+  position: relative;
+  /* EDIT 3: Reduce bottom padding */
+  padding-bottom: 3rem; /* Reduced from 7rem to 3rem */
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  will-change: transform;
+  /* Add these to ensure container has dimensions */
+  min-height: 300px;
+  position: relative;
+  background-color: #f0f0f0; /* Fallback color */
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills container */
+  display: block; /* Removes extra space under image */
+  transition: transform 0.5s ease;
+}
+.about-image:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.about-image:hover img {
+  transform: scale(1.05);
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.about-text .btn {
+  margin-top: 1rem;
+}
+.brand-name {
+  font-family: 'Montserrat', 'Poppins', sans-serif; /* Professional font stack */
+  font-size: 10rem; /* Larger size */
+  font-weight: 800; /* Bold weight */
+  letter-spacing: 0.5px; /* Slightly tighter letter spacing */
+  color: #213547; /* Professional dark color (match your h1 color) */
+  text-transform: uppercase; /* Uppercase looks more professional for brands */
+  /* EDIT 3: Reduce margin */
+  margin: 0.2em 0; /* Reduced from 0.5em to 0.2em */
+  text-shadow: 1px 1px 3px rgba(29, 124, 232, 0.822); /* Subtle depth */
+}
+
+/* Gallery Section */
+.gallery {
+  background-color: #f8f9fa;
+  /* EDIT 3: Reduce padding */
+  padding: 30px 0 0; /* Reduced from 60px to 30px */
+}
+
+.gallery-actions {
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.edit-btn {
+  background-color: #00BFB3;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #ff4444;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+  }
+  
+  .gallery-actions {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+/* Pricing Section */
+.pricing {
+  background-color: white;
+  position: relative;
+  /* EDIT 3: Reduce bottom padding */
+  padding-bottom: 3rem; /* Reduced from 7rem to 3rem */
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.price-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  border: 1px solid var(--light-gray);
+  will-change: transform;
+}
+
+.price-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.price-card.featured {
+  transform: scale(1.05);
+  border: none;
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+}
+
+.price-card.featured:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.price-card.featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-blue), var(--teal-accent));
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.price-card.featured::after {
+  content: "RECOMMENDED";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--teal-accent);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.price-header {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.price-header h3 {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.price span {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--medium-gray);
+}
+
+.features {
+  padding: 2.5rem 2rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.feature.inactive {
+  color: var(--medium-gray);
+}
+
+.checkmark {
+  color: var(--teal-accent);
+  margin-right: 0.8rem;
+  font-weight: bold;
+}
+
+.feature.inactive .checkmark {
+  color: var(--medium-gray);
+}
+
+.price-card .btn {
+  display: block;
+  margin: 0 2rem 2.5rem;
+}
+
+/* Contact Section */
+.contact {
+  background-color: var(--off-white);
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-form {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Form Group Styling - Labels Above Inputs */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  position: static !important;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--dark-gray);
+  transform: none !important;
+  font-size: 1rem !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--teal-accent);
+  box-shadow: 0 0 0 3px rgba(0, 180, 179, 0.1);
+}
+
+/* Remove the floating label effects */
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:not([value=""]):valid + label {
+  position: static !important;
+  transform: none !important;
+  font-size: 1rem !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+/* Remove focus border animation (not needed anymore) */
+.focus-border {
+  display: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--teal-accent);
+  box-shadow: 0 0 0 3px rgba(0, 180, 179, 0.1);
+}
+
+.form-group input:focus ~ .focus-border,
+.form-group textarea:focus ~ .focus-border,
+.form-group select:focus ~ .focus-border {
+  width: 100%;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:not([value=""]):valid + label {
+  top: -0.6rem;
+  left: 0.6rem;
+  font-size: 0.8rem;
+  background-color: white;
+  padding: 0 0.3rem;
+  color: var(--teal-accent);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.form-group select::placeholder {
+  color: transparent;
+}
+
+.contact-info {
+  padding: 2rem;
+}
+
+.info-header {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.info-header:first-child {
+  margin-top: 0;
+}
+
+.info-header h3 {
+  color: var(--primary-blue);
+  font-size: 1.3rem;
+}
+
+.map-container {
+  margin-top: 2.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.map-container:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.map-container img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--primary-blue);
+  color: white;
+  /* EDIT 1: Remove black space at bottom by reducing padding */
+  padding: 3rem 0 1rem; /* Reduced from 5rem to 3rem */
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 3rem;
+}
+
+
+.footer-logo img:hover {
+  transform: scale(1.1);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.link-group h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.link-group ul li {
+  margin-bottom: 0.9rem;
+}
+
+.link-group a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: all var(--transition-fast);
+  padding-bottom: 2px;
+}
+
+.link-group a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--teal-accent);
+  transition: width var(--transition-normal);
+}
+
+.link-group a:hover {
+  color: var(--teal-accent);
+}
+
+.link-group a:hover::after {
+  width: 100%;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: flex-end;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-normal);
+  will-change: transform;
+}
+
+.social-icon:hover {
+  background-color: var(--teal-accent);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 180, 179, 0.3);
+}
+
+.social-icon img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+.copyright {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  /* EDIT 1: Reduce margin to remove extra space */
+  margin-top: 2rem; /* Reduced from 4rem to 2rem */
+  padding-top: 1rem; /* Reduced from 2rem to 1rem */
+}
+
+.copyright p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+
+/* Animation Classes */
+.reveal-fade,
+.reveal-slide-left,
+.reveal-slide-right,
+.reveal-slide-up {
+  opacity: 0;
+  transition: all 1s ease;
+  will-change: transform, opacity;
+}
+
+.reveal-slide-left {
+  transform: translateX(-50px);
+}
+
+.reveal-slide-right {
+  transform: translateX(50px);
+}
+
+.reveal-slide-up {
+  transform: translateY(50px);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-logo {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .pricing-cards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .price-card.featured {
+    transform: scale(1);
+  }
+
+  .price-card.featured:hover {
+    transform: translateY(-10px) scale(1.03);
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  header {
+    height: 80px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .header-logo {
+      width: 120px; /* Slightly smaller for mobile */
+    }
+  }
+
+  /* Update the logo styles */
+  header {
+    padding: 15px 0; /* Add vertical padding */
+    /* Keep other existing header styles */
+  }
+
+  /* Remove hover effect on container (keep if you want logo hover) */
+  .header-logo:hover {
+    transform: scale(1.05);
+  } 
+
+  .service-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  section {
+    padding: 3rem 0; /* Reduced from 4rem to 3rem */
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+/* Lazy Loading */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Add these rules at the end of your CSS file to remove the white space at the bottom */
+
+/* Remove any potential margin/padding at the bottom of the page */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure the footer sticks to the bottom with no extra space */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+footer {
+  margin-top: auto; /* Push footer to the bottom */
+  margin-bottom: 0; /* Ensure no margin at the bottom */
+  padding-bottom: 0; /* Remove bottom padding */
+}
+
+/* Remove any potential margin from the copyright section */
+.copyright {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.copyright p {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Fix for potential white space from email-decode script */
+script[data-cfasync="false"] {
+  display: none;
+  height: 0;
+  visibility: hidden;
+}
+
+/* Add these rules at the end of your CSS file to remove the white line at the bottom */
+
+/* Remove any potential margin/padding at the bottom of the page */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure the footer sticks to the bottom with no extra space */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+footer {
+  margin-top: auto; /* Push footer to the bottom */
+  margin-bottom: 0; /* Ensure no margin at the bottom */
+  padding-bottom: 0 !important; /* Remove bottom padding */
+  border-bottom: none !important; /* Remove any potential border */
+}
+
+/* Remove any potential margin from the copyright section */
+.copyright {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+.copyright p {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Fix for potential white space from email-decode script */
+script[data-cfasync="false"] {
+  display: none !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Remove any potential margin/padding from all elements at the bottom of the page */
+footer *:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+/* Additional fix for the white line */
+html {
+  background-color: var(--primary-blue); /* Match the footer background color */
+}
+
+/* Ensure the button in the featured pricing card is visible */
+.price-card.featured .btn.primary-btn {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  padding: 0.9rem 2rem !important;
+  margin: 0 2rem 2.5rem !important;
+  background-color: var(--primary-blue) !important;
+  color: white !important;
+  border: 2px solid var(--primary-blue) !important;
+}
+
+/* Ensure the Send Message button is visible */
+.contact-form .btn.primary-btn {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  padding: 0.9rem 2rem !important;
+  margin-top: 1.5rem !important;
+  background-color: var(--primary-blue) !important;
+  color: white !important;
+  border: 2px solid var(--primary-blue) !important;
+}

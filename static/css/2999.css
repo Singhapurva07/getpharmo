@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+}
+
+.checkout-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.order-summary {
+    background: #f8f9fa;
+    padding: 2.5rem;
+    width: 35%;
+    position: relative;
+}
+
+.order-summary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: #e2e8f0;
+}
+
+.order-summary h2 {
+    color: #2d3748;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.plan-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.plan-name {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.plan-price {
+    color: #007EA7;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.period {
+    color: #718096;
+    font-size: 0.875rem;
+    font-weight: normal;
+}
+
+.divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 1.5rem 0;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.total-amount {
+    color: #007EA7;
+    font-size: 1.25rem;
+}
+
+.payment-section {
+    padding: 2.5rem;
+    flex-grow: 1;
+}
+
+.payment-section h2 {
+    color: #2d3748;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment-option {
+    cursor: pointer;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: #007EA7;
+    transform: translateX(5px);
+}
+
+.option-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.option-content img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.payment-option input[type="radio"]:checked + .option-content {
+    color: #007EA7;
+    font-weight: 600;
+}
+
+.payment-option input[type="radio"]:checked + .option-content::after {
+    content: '✓';
+    margin-left: auto;
+    color: #007EA7;
+    font-weight: bold;
+}
+
+.proceed-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #007EA7;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.proceed-btn:hover {
+    background: #006990;
+    transform: translateY(-2px);
+}
+
+.proceed-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.proceed-btn:hover svg {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .checkout-card {
+        flex-direction: column;
+    }
+
+    .order-summary {
+        width: 100%;
+    }
+
+    .order-summary::after {
+        display: none;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}
+
+/* Additional Animations */
+.payment-option {
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.payment-option:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.payment-option:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.payment-option:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
