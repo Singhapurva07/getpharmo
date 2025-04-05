@@ -7,22 +7,27 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logologo.png') }}">
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <div class="container">
       <div class="logo">
-        <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
+        <a href="{{ url_for('about') }}">
+          <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
+        </a>
       </div>
+      
       <nav class="desktop-nav">
         <ul>
-          <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#about">About us</a></li>
+          <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
       </nav>
       <div class="mobile-menu-toggle">
@@ -323,7 +328,7 @@
               <li><a href="#home">About Us</a></li>
               <li><a href="#services">Services</a></li>
               <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div>
           <div class="link-group">
