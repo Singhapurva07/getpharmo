@@ -8,10 +8,10 @@ app = Flask(__name__)
 
 # MySQL Database Connection using MySQLdb
 db = MySQLdb.connect(
-    host="tramway.proxy.rlwy.net",
-    port=54114,
+    host="centerbeam.proxy.rlwy.net",
+    port=44621,
     user="root",
-    password="hOQnmWNoBVBYyjjWlZrzvZvCMApaZIvT",
+    password="oirtGJMvndULzdeCFrzBqSpdUTzCgxqn",
     database="railway"
 )
 
