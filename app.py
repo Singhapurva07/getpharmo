@@ -7,13 +7,15 @@ import MySQLdb  # Import MySQLdb after installation
 app = Flask(__name__)
 
 # MySQL Database Connection using MySQLdb
+
 db = MySQLdb.connect(
-    host="centerbeam.proxy.rlwy.net",
-    port=44621,
+    host="tramway.proxy.rlwy.net",
+    port=54114,
     user="root",
-    password="oirtGJMvndULzdeCFrzBqSpdUTzCgxqn",
+    password="hOQnmWNoBVBYyjjWlZrzvZvCMApaZIvT",
     database="railway"
 )
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
