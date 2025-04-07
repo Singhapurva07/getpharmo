@@ -6,9 +6,46 @@
     <title>Medication Error Prevention Guide</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/servicesmid.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logologo.png') }}">
 </head>
 <body>
+    <header>
+        <div class="container">
+          <div class="logo">
+            <a href="{{ url_for('about') }}">
+              <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
+            </a>
+          </div>
+          
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+              <li><a href="{{ url_for('about') }}">About us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </nav>
+          <div class="mobile-menu-toggle">
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+      <nav class="mobile-nav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    
     <div class="container">
         <header class="animate__animated animate__fadeIn">
             <h1>Medication Error Prevention Guide</h1>
@@ -84,5 +121,6 @@
             </div>
         </section>
     </div>
+    
 </body>
 </html>
