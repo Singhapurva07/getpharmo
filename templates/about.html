@@ -9,15 +9,50 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logologo.png') }}">
 </head>
 <body>
+    <header>
+        <div class="container">
+          <div class="logo">
+            <a href="{{ url_for('about') }}">
+              <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
+            </a>
+          </div>
+          
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+              <li><a href="{{ url_for('about') }}">About us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </nav>
+          <div class="mobile-menu-toggle">
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+      <nav class="mobile-nav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    
     <div class="container">
         <div class="image-section animate__animated animate__fadeInLeft">
             <img src="{{ url_for('static', filename='images/FOUNDER.jpg') }}" alt="Founder" class="founder-image">
         </div>
         
         <div class="content-section animate__animated animate__fadeInRight">
-            <header>
-                <h1>About Us</h1>
-            </header>
             
             <main class="content">
                 <div class="about-text">
@@ -36,5 +71,6 @@
             </main>
         </div>
     </div>
+    
 </body>
 </html>
