@@ -49,7 +49,9 @@ def home():
             error_message = "Please fill in all required fields."
 
     return render_template('index.html', success_message=success_message, error_message=error_message)
-
+@app.route('/')
+def index():
+    return render_template('index.html')
 @app.route('/about')
 def about():
     return render_template('about.html')
