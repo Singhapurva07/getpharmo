@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>About Us - Getpharmo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logologo.png') }}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <style>
         /* Base Styles */
         :root {
@@ -127,7 +129,7 @@
             height: 18px;
             position: relative;
             transform: rotate(0deg);
-            transition: .5s ease-in-out;
+            transition: 0.5s ease-in-out;
         }
 
         .hamburger span {
@@ -140,18 +142,18 @@
             opacity: 1;
             left: 0;
             transform: rotate(0deg);
-            transition: .25s ease-in-out;
+            transition: 0.25s ease-in-out;
         }
 
-        .hamburger span:nth-child(1) { 
+        .hamburger span:nth-child(1) {
             top: 0px;
             transform-origin: left center;
         }
-        .hamburger span:nth-child(2) { 
+        .hamburger span:nth-child(2) {
             top: 8px;
             transform-origin: left center;
         }
-        .hamburger span:nth-child(3) { 
+        .hamburger span:nth-child(3) {
             top: 16px;
             transform-origin: left center;
         }
@@ -195,6 +197,7 @@
         .mobile-nav ul {
             list-style: none;
             padding: 1rem 2rem;
+            margin: 0;
         }
 
         .mobile-nav a {
@@ -338,7 +341,8 @@
                 gap: 2rem;
             }
 
-            .image-section, .content-section {
+            .image-section,
+            .content-section {
                 width: 100%;
             }
 
@@ -386,15 +390,15 @@
                 padding: 1rem;
                 min-height: calc(100vh - 60px);
             }
-            
+
             .content {
                 padding: 1.5rem;
             }
-            
+
             h1 {
                 font-size: 2rem;
             }
-            
+
             p {
                 font-size: 1rem;
             }
@@ -406,24 +410,28 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="{{ url_for('about') }}">
-                    <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
+                <a href="#">
+                    <img
+                      src="https://via.placeholder.com/150x50?text=Getpharmo+Logo"
+                      alt="Getpharmo Logo"
+                      class="header-logo"
+                    />
                 </a>
             </div>
-            
+
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
-                    <li><a href="{{ url_for('about') }}">About us</a></li>
-                    <li><a href="{{ url_for('index') }}">Services</a></li>
-                    <li><a href="{{ url_for('index') }}">Gallery</a></li>
-                    <li><a href="{{ url_for('index') }}">Pricing</a></li>
-                    <li><a href="{{ url_for('index') }}">Contact Us</a></li>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </nav>
-            
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <div class="hamburger">
+
+            <div class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+                <div class="hamburger" aria-hidden="true">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -431,25 +439,29 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Mobile Navigation -->
-    <nav class="mobile-nav" id="mobileNav">
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>
         <ul>
-            <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
-            <li><a href="{{ url_for('about') }}">About us</a></li>
-            <li><a href="{{ url_for('index') }}">Services</a></li>
-            <li><a href="{{ url_for('index') }}">Gallery</a></li>
-            <li><a href="{{ url_for('index') }}">Pricing</a></li>
-            <li><a href="{{ url_for('index') }}">Contact Us</a></li>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Contact Us</a></li>
         </ul>
     </nav>
-    
+
     <!-- Main Content -->
     <div class="container main-content">
         <div class="image-section animate__animated animate__fadeInLeft">
-            <img src="{{ url_for('static', filename='images/FOUNDER.jpg') }}" alt="Founder" class="founder-image">
+            <img
+              src="https://via.placeholder.com/550x400?text=Founder+Image"
+              alt="Founder"
+              class="founder-image"
+            />
         </div>
-        
+
         <div class="content-section animate__animated animate__fadeInRight">
             <main class="content">
                 <div class="about-text">
@@ -457,11 +469,11 @@
                     <p>
                         We are India's first <strong>Medication Opinion Centre</strong>, revolutionizing the way patients receive medication feedback—an area where India has yet to catch up. Backed by <strong>qualified Doctors of Pharmacy</strong>, Getpharmo is on a mission to become the world's leading medication consultancy.
                     </p>
-                    
+
                     <p>
                         In today's fast-evolving healthcare landscape, we bridge the gap between <strong>security and accessibility</strong>. Our platform ensures medical records are not only <strong>highly secure</strong> but also <strong>effortlessly accessible</strong>, empowering both patients and providers.
                     </p>
-                    
+
                     <p>
                         Founded by <strong>healthcare professionals and security experts</strong>, we uphold the <strong>highest standards of data protection</strong>, making healthcare access seamless, reliable, and future-ready.
                     </p>
@@ -469,45 +481,56 @@
             </main>
         </div>
     </div>
-    
+
     <script>
         // Toggle Mobile Menu
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mobileNav = document.getElementById('mobileNav');
             const hamburger = document.querySelector('.hamburger');
-            
-            mobileMenuToggle.addEventListener('click', function() {
-                // Toggle mobile nav
-                mobileNav.classList.toggle('active');
-                
-                // Toggle hamburger animation
+
+            function toggleMenu() {
+                const isActive = mobileNav.classList.toggle('active');
                 hamburger.classList.toggle('active');
-                
-                // Prevent scrolling when menu is open
-                if (mobileNav.classList.contains('active')) {
+                mobileMenuToggle.setAttribute('aria-expanded', isActive);
+                if (isActive) {
+                    mobileNav.removeAttribute('hidden');
                     document.body.style.overflow = 'hidden';
                 } else {
+                    mobileNav.setAttribute('hidden', '');
                     document.body.style.overflow = '';
                 }
+            }
+
+            mobileMenuToggle.addEventListener('click', toggleMenu);
+            mobileMenuToggle.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMenu();
+                }
             });
-            
+
             // Close menu when clicking on a link
             const navLinks = document.querySelectorAll('.mobile-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+            navLinks.forEach((link) => {
+                link.addEventListener('click', function () {
                     mobileNav.classList.remove('active');
                     hamburger.classList.remove('active');
+                    mobileNav.setAttribute('hidden', '');
+                    mobileMenuToggle.setAttribute('aria-expanded', false);
                     document.body.style.overflow = '';
                 });
             });
-            
+
             // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = mobileNav.contains(event.target) || mobileMenuToggle.contains(event.target);
+            document.addEventListener('click', function (event) {
+                const isClickInsideNav =
+                    mobileNav.contains(event.target) || mobileMenuToggle.contains(event.target);
                 if (!isClickInsideNav && mobileNav.classList.contains('active')) {
                     mobileNav.classList.remove('active');
                     hamburger.classList.remove('active');
+                    mobileNav.setAttribute('hidden', '');
+                    mobileMenuToggle.setAttribute('aria-expanded', false);
                     document.body.style.overflow = '';
                 }
             });
