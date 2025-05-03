@@ -732,7 +732,7 @@
             </div>
             <nav class="desktop-nav">
                 <ul>
-                  <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+                  <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
                   <li><a href="{{ url_for('about') }}">About us</a></li>
                   <li><a href="{{ url_for('index') }}">Services</a></li>
                   <li><a href="{{ url_for('index') }}">Gallery</a></li>
@@ -746,7 +746,7 @@
     <nav class="mobile-nav">
         <div class="close-button"></div>
         <ul>
-          <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+          <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
           <li><a href="{{ url_for('about') }}">About us</a></li>
           <li><a href="{{ url_for('index') }}">Services</a></li>
           <li><a href="{{ url_for('index') }}">Gallery</a></li>
@@ -859,10 +859,10 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="#" class="social-icon"><img src="/facebook-icon.svg" alt="Facebook"></a>
-                    <a href="#" class="social-icon"><img src="/twitter-icon.svg" alt="Twitter"></a>
-                    <a href="#" class="social-icon"><img src="/linkedin-icon.svg" alt="LinkedIn"></a>
-                    <a href="#" class="social-icon"><img src="/instagram-icon.svg" alt="Instagram"></a>
+                  <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/facebook-icon.svg') }}" alt="Facebook"></a>
+                  <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/twitter-icon.svg') }}" alt="Twitter"></a>
+                  <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/linkedin-icon.svg') }}" alt="LinkedIn"></a>
+                  <a href="#" class="social-icon"><img src="{{ url_for('static', filename='images/instagram-icon.svg') }}" alt="Instagram"></a>
                 </div>
             </div>
             <div class="copyright">
