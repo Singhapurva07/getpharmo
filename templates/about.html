@@ -5,14 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Getpharmo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logologo.png') }}">
     <style>
-        /* ===== Base Styles ===== */
+        /* Base Styles */
+        :root {
+            --primary-blue: #0d6e8c;
+            --teal-accent: #00b4b3;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #adb5bd;
+            --dark-gray: #495057;
+            --text-color: #212529;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -22,7 +39,7 @@
             padding-top: 80px;
         }
 
-        /* ===== Header Styles ===== */
+        /* Header styles */
         header {
             position: fixed;
             top: 0;
@@ -32,36 +49,48 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             height: 80px;
+            transition: height 0.3s ease;
         }
 
-        .container {
+        header .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
-            height: 100%;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
         }
 
-        .logo img {
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo {
             height: 50px;
             width: auto;
+            transition: transform 0.3s ease;
         }
 
-        /* ===== Desktop Navigation ===== */
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Desktop Navigation */
         .desktop-nav ul {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            list-style: none;
         }
 
         .desktop-nav a {
             color: #333;
             text-decoration: none;
             font-weight: 500;
-            position: relative;
             padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
         .desktop-nav a::after {
@@ -72,7 +101,12 @@
             width: 0;
             height: 2px;
             background: #007A8A;
-            transition: width 0.3s;
+            transition: width 0.3s ease;
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: #007A8A;
         }
 
         .desktop-nav a:hover::after,
@@ -80,47 +114,66 @@
             width: 100%;
         }
 
-        /* ===== Mobile Menu Toggle ===== */
+        /* Mobile Navigation Toggle */
         .mobile-menu-toggle {
             display: none;
             cursor: pointer;
-            z-index: 1001; /* Ensure it's above other elements */
+            z-index: 1001;
+            padding: 10px;
         }
 
         .hamburger {
-            width: 30px;
-            height: 20px;
+            width: 24px;
+            height: 18px;
             position: relative;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
         }
 
         .hamburger span {
             display: block;
             position: absolute;
-            height: 3px;
+            height: 2px;
             width: 100%;
-            background: #007A8A; /* Changed to teal for better visibility */
-            border-radius: 3px;
-            transition: all 0.3s ease;
+            background: #333;
+            border-radius: 2px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
         }
 
-        .hamburger span:nth-child(1) { top: 0; }
-        .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-        .hamburger span:nth-child(3) { bottom: 0; }
+        .hamburger span:nth-child(1) { 
+            top: 0px;
+            transform-origin: left center;
+        }
+        .hamburger span:nth-child(2) { 
+            top: 8px;
+            transform-origin: left center;
+        }
+        .hamburger span:nth-child(3) { 
+            top: 16px;
+            transform-origin: left center;
+        }
 
-        /* Active state (when menu is open) */
         .hamburger.active span:nth-child(1) {
-            top: 50%;
-            transform: translateY(-50%) rotate(45deg);
+            transform: rotate(45deg);
+            top: -3px;
+            left: 3px;
         }
+
         .hamburger.active span:nth-child(2) {
+            width: 0%;
             opacity: 0;
         }
+
         .hamburger.active span:nth-child(3) {
-            bottom: 50%;
-            transform: translateY(50%) rotate(-45deg);
+            transform: rotate(-45deg);
+            top: 19px;
+            left: 3px;
         }
 
-        /* ===== Mobile Navigation ===== */
+        /* Mobile Navigation */
         .mobile-nav {
             position: fixed;
             top: 80px;
@@ -131,11 +184,12 @@
             z-index: 999;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease;
+            transition: max-height 0.5s ease-out;
         }
 
         .mobile-nav.active {
             max-height: 500px;
+            transition: max-height 0.5s ease-in;
         }
 
         .mobile-nav ul {
@@ -150,50 +204,31 @@
             text-decoration: none;
             font-weight: 500;
             border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
         }
 
-        /* ===== Responsive Styles ===== */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 60px;
-            }
-            
-            header {
-                height: 60px;
-            }
-            
-            .mobile-menu-toggle {
-                display: block; /* Force show the hamburger */
-            }
-            
-            .desktop-nav {
-                display: none; /* Hide desktop nav */
-            }
-            
-            .mobile-nav {
-                top: 60px;
-            }
-            
-            /* Make hamburger more visible */
-            .hamburger span {
-                background: #007A8A; /* Teal color */
-                height: 3px;
-                width: 30px;
-            }
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: #007A8A;
+            padding-left: 10px;
         }
 
-        /* ===== Main Content Styles ===== */
-        .main-content {
+        /* Main content container */
+        .container.main-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
             display: flex;
             gap: 4rem;
+            align-items: center;
             min-height: calc(100vh - 80px);
         }
 
+        /* Image section styles */
         .image-section {
             flex: 1;
+            padding: 1rem;
+            margin-top: 1rem;
         }
 
         .founder-image {
@@ -201,33 +236,178 @@
             max-width: 550px;
             border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0, 122, 138, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .founder-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 122, 138, 0.3);
+        }
+
+        /* Content section styles */
         .content-section {
             flex: 1;
         }
 
+        /* Content styles */
         .content {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
-            padding: 3rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text {
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #007A8A;
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, #007A8A, #00bcd4);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        h1:hover::after {
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            transition: transform 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        p:hover {
+            transform: translateX(10px);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        strong {
+            color: #007A8A;
+            font-weight: 600;
+            position: relative;
+            padding: 0 4px;
+        }
+
+        strong::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #007A8A;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        strong:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Responsive design */
         @media (max-width: 1200px) {
-            .main-content {
+            .container.main-content {
                 flex-direction: column;
+                gap: 2rem;
+            }
+
+            .image-section, .content-section {
+                width: 100%;
+            }
+
+            .founder-image {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+
+            header {
+                height: 60px;
+            }
+
+            .header-logo {
+                height: 40px;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .mobile-nav {
+                top: 60px;
+            }
+
+            .container.main-content {
+                padding: 1rem;
+                min-height: calc(100vh - 60px);
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
-    <header>
+    <header class="header">
         <div class="container">
             <div class="logo">
                 <a href="{{ url_for('about') }}">
-                    <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo">
+                    <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
                 </a>
             </div>
             
@@ -242,7 +422,6 @@
                 </ul>
             </nav>
             
-            <!-- Mobile Menu Toggle -->
             <div class="mobile-menu-toggle" id="mobileMenuToggle">
                 <div class="hamburger">
                     <span></span>
@@ -266,49 +445,71 @@
     </nav>
     
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="container main-content">
         <div class="image-section animate__animated animate__fadeInLeft">
             <img src="{{ url_for('static', filename='images/FOUNDER.jpg') }}" alt="Founder" class="founder-image">
         </div>
         
         <div class="content-section animate__animated animate__fadeInRight">
-            <div class="content">
+            <main class="content">
                 <div class="about-text">
                     <h1>About Getpharmo</h1>
                     <p>
                         We are India's first <strong>Medication Opinion Centre</strong>, revolutionizing the way patients receive medication feedback—an area where India has yet to catch up. Backed by <strong>qualified Doctors of Pharmacy</strong>, Getpharmo is on a mission to become the world's leading medication consultancy.
                     </p>
+                    
                     <p>
                         In today's fast-evolving healthcare landscape, we bridge the gap between <strong>security and accessibility</strong>. Our platform ensures medical records are not only <strong>highly secure</strong> but also <strong>effortlessly accessible</strong>, empowering both patients and providers.
                     </p>
+                    
                     <p>
                         Founded by <strong>healthcare professionals and security experts</strong>, we uphold the <strong>highest standards of data protection</strong>, making healthcare access seamless, reliable, and future-ready.
                     </p>
                 </div>
-            </div>
+            </main>
         </div>
     </div>
-
+    
     <script>
+        // Toggle Mobile Menu
         document.addEventListener('DOMContentLoaded', function() {
-            const toggle = document.getElementById('mobileMenuToggle');
-            const menu = document.getElementById('mobileNav');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNav = document.getElementById('mobileNav');
             const hamburger = document.querySelector('.hamburger');
             
-            // Toggle menu on click
-            toggle.addEventListener('click', function() {
-                menu.classList.toggle('active');
+            mobileMenuToggle.addEventListener('click', function() {
+                // Toggle mobile nav
+                mobileNav.classList.toggle('active');
+                
+                // Toggle hamburger animation
                 hamburger.classList.toggle('active');
-                document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+                
+                // Prevent scrolling when menu is open
+                if (mobileNav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
             });
             
-            // Close menu when clicking on links
-            document.querySelectorAll('.mobile-nav a').forEach(link => {
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.mobile-nav a');
+            navLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    menu.classList.remove('active');
+                    mobileNav.classList.remove('active');
                     hamburger.classList.remove('active');
                     document.body.style.overflow = '';
                 });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = mobileNav.contains(event.target) || mobileMenuToggle.contains(event.target);
+                if (!isClickInsideNav && mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             });
         });
     </script>
