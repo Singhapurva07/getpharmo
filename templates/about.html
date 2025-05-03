@@ -4,59 +4,444 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Getpharmo</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logologo.png') }}">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-blue: #0d6e8c;
+            --teal-accent: #00b4b3;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #adb5bd;
+            --dark-gray: #495057;
+            --text-color: #212529;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0f7fa 100%);
+            color: #333;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* Header styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 80px;
+            transition: height 0.3s ease;
+        }
+
+        header .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .desktop-nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #007A8A;
+            transition: width 0.3s ease;
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: #007A8A;
+        }
+
+        .desktop-nav a:hover::after,
+        .desktop-nav a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Navigation Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #333;
+            border-radius: 2px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) { top: 0px; }
+        .hamburger span:nth-child(2) { top: 8px; }
+        .hamburger span:nth-child(3) { top: 16px; }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .mobile-nav.active {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 2rem;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 1rem 0;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: #007A8A;
+            padding-left: 10px;
+        }
+
+        /* Main content container */
+        .container.main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Image section styles */
+        .image-section {
+            flex: 1;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .founder-image {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 122, 138, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .founder-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 122, 138, 0.3);
+        }
+
+        /* Content section styles */
+        .content-section {
+            flex: 1;
+        }
+
+        /* Content styles */
+        .content {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text {
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #007A8A;
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, #007A8A, #00bcd4);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        h1:hover::after {
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            transition: transform 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        p:hover {
+            transform: translateX(10px);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        strong {
+            color: #007A8A;
+            font-weight: 600;
+            position: relative;
+            padding: 0 4px;
+        }
+
+        strong::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #007A8A;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        strong:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .container.main-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .image-section, .content-section {
+                width: 100%;
+            }
+
+            .founder-image {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+
+            header {
+                height: 60px;
+            }
+
+            .header-logo {
+                height: 40px;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .mobile-nav {
+                top: 60px;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                top: 8px;
+                transform: rotate(135deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+                left: -60px;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                top: 8px;
+                transform: rotate(-135deg);
+            }
+
+            .container.main-content {
+                padding: 1rem;
+                min-height: calc(100vh - 60px);
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <!-- Header Section -->
+    <header class="header">
         <div class="container">
-          <div class="logo">
-            <a href="{{ url_for('about') }}">
-              <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
-            </a>
-          </div>
-          
-          <nav class="desktop-nav">
-            <ul>
-              <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
-              <li><a href="{{ url_for('about') }}">About us</a></li>
-              <li><a href="{{ url_for('index') }}">Services</a></li>
-              <li><a href="{{ url_for('index') }}">Gallery</a></li>
-              <li><a href="{{ url_for('index') }}">Pricing</a></li>
-              <li><a href="{{ url_for('index') }}">Contact Us</a></li>
-            </ul>
-          </nav>
-          <div class="mobile-menu-toggle">
-            <div class="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="logo">
+                <a href="{{ url_for('about') }}">
+                    <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
+                </a>
             </div>
-          </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About us</a></li>
+                    <li><a href="{{ url_for('index') }}">Services</a></li>
+                    <li><a href="{{ url_for('index') }}">Gallery</a></li>
+                    <li><a href="{{ url_for('index') }}">Pricing</a></li>
+                    <li><a href="{{ url_for('index') }}">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
-      </header>
+    </header>
     
-      <nav class="mobile-nav">
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
         <ul>
-          <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
-          <li><a href="{{ url_for('about') }}">About us</a></li>
-          <li><a href="{{ url_for('index') }}">Services</a></li>
-          <li><a href="{{ url_for('index') }}">Gallery</a></li>
-          <li><a href="{{ url_for('index') }}">Pricing</a></li>
-          <li><a href="{{ url_for('index') }}">Contact Us</a></li>
+            <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About us</a></li>
+            <li><a href="{{ url_for('index') }}">Services</a></li>
+            <li><a href="{{ url_for('index') }}">Gallery</a></li>
+            <li><a href="{{ url_for('index') }}">Pricing</a></li>
+            <li><a href="{{ url_for('index') }}">Contact Us</a></li>
         </ul>
-      </nav>
+    </nav>
     
-    <div class="container">
+    <!-- Main Content -->
+    <div class="container main-content">
         <div class="image-section animate__animated animate__fadeInLeft">
             <img src="{{ url_for('static', filename='images/FOUNDER.jpg') }}" alt="Founder" class="founder-image">
         </div>
         
         <div class="content-section animate__animated animate__fadeInRight">
-            
             <main class="content">
                 <div class="about-text">
+                    <h1>About Getpharmo</h1>
                     <p>
                         We are India's first <strong>Medication Opinion Centre</strong>, revolutionizing the way patients receive medication feedback—an area where India has yet to catch up. Backed by <strong>qualified Doctors of Pharmacy</strong>, Getpharmo is on a mission to become the world's leading medication consultancy.
                     </p>
@@ -73,5 +458,35 @@
         </div>
     </div>
     
+    <script>
+        // Toggle Mobile Menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                hamburger.classList.toggle('active');
+                
+                // Prevent scrolling when menu is open
+                if (mobileNav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.mobile-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
