@@ -1,123 +1,980 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proper Medication Usage Guide</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/servicesmid.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logologo.png') }}">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medication Error Monitoring System</title>
+    <style>
+      :root {
+        --primary-color: #00A4A6;
+        --secondary-color: #E6F7F7;
+        --text-color: #333;
+        --background-color: #F5F7FA;
+        --card-background: #FFFFFF;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        --animation-duration: 0.8s;
+        --primary-blue: #0d6e8c;
+        --teal-accent: #00b4b3;
+        --off-white: #f8f9fa;
+        --light-gray: #e9ecef;
+        --medium-gray: #adb5bd;
+        --dark-gray: #495057;
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --transition-fast: 0.2s ease;
+        --transition-normal: 0.3s ease;
+        --transition-slow: 0.5s ease;
+        --accent-color: #008486;
+        --hover-color: #007274;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .animate-slide-down {
+        animation: slideDown var(--animation-duration) ease-out;
+      }
+
+      .animate-slide-up {
+        opacity: 0;
+        animation: slideUp var(--animation-duration) ease-out forwards;
+      }
+
+      .animate-fade-in {
+        animation: fadeIn var(--animation-duration) ease-out;
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      body {
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        padding-top: 120px;
+        position: relative;
+        z-index: 500;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: all var(--transition-normal);
+        height: 100px;
+        padding: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 2rem;
+      }
+
+      header.scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: var(--shadow-md);
+        height: 80px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-logo {
+        width: 220px;
+        height: auto;
+        max-height: 220px;
+        object-fit: contain;
+        transition: all var(--transition-normal);
+      }
+
+      .desktop-nav ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none; /* Added to remove dots between links */
+      }
+
+      .desktop-nav a {
+        color: var(--dark-gray);
+        font-weight: 600;
+        position: relative;
+        padding: 0.5rem 0;
+        font-family: 'Arial', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+
+      .desktop-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--teal-accent);
+        transition: none;
+      }
+
+      .desktop-nav a:hover {
+        color: var(--teal-accent);
+      }
+
+      .desktop-nav a.active::after {
+        width: 100%;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        cursor: pointer;
+      }
+
+      .hamburger {
+        width: 30px;
+        height: 20px;
+        position: relative;
+      }
+
+      .hamburger span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: var(--primary-blue);
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: var(--transition-fast);
+      }
+
+      .hamburger span:nth-child(1) {
+        top: 0px;
+      }
+
+      .hamburger span:nth-child(2) {
+        top: 8px;
+      }
+
+      .hamburger span:nth-child(3) {
+        top: 16px;
+      }
+
+      .mobile-menu-open .hamburger span:nth-child(1) {
+        top: 8px;
+        transform: rotate(135deg);
+      }
+
+      .mobile-menu-open .hamburger span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+      }
+
+      .mobile-menu-open .hamburger span:nth-child(3) {
+        top: 8px;
+        transform: rotate(-135deg);
+      }
+
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: white;
+        z-index: 2000;
+        padding: 4rem 2rem 2rem;
+        box-shadow: var(--shadow-lg);
+        transition: left var(--transition-normal);
+      }
+
+      .mobile-menu-open .mobile-nav {
+        left: 0;
+      }
+
+      .mobile-nav .close-button {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        width: 40px;
+        height: 40px;
+        background-color: var(--light-gray);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color var(--transition-fast), transform var(--transition-fast);
+      }
+
+      .mobile-nav .close-button:hover {
+        background-color: var(--medium-gray);
+        transform: rotate(90deg);
+      }
+
+      .mobile-nav .close-button::before,
+      .mobile-nav .close-button::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background-color: var(--dark-gray);
+      }
+
+      .mobile-nav .close-button::before {
+        transform: rotate(45deg);
+      }
+
+      .mobile-nav .close-button::after {
+        transform: rotate(-45deg);
+      }
+
+      .mobile-nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      .mobile-nav a {
+        display: block;
+        font-size: 1.2rem;
+        color: var(--dark-gray);
+        padding: 0.5rem 0;
+        font-weight: 600;
+        font-family: 'Arial', sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      .mobile-nav a:hover,
+      .mobile-nav a.active {
+        color: var(--teal-accent);
+      }
+
+      .mobile-nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--teal-accent);
+      }
+
+      .medical-image-section {
+        padding: 1rem;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .medical-image {
+        width: 100%;
+        max-width: 550px;
+        border-radius: 30px;
+        box-shadow: 0 10px 30px rgba(0, 122, 138, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .medical-image:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 122, 138, 0.3);
+      }
+
+      .hero-section {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .shield-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        position: relative;
+        display: inline-block;
+      }
+
+      h1::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      h1:hover::after {
+        width: 100%;
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 2rem;
+        transition: color 0.3s ease;
+      }
+
+      .subtitle:hover {
+        color: var(--primary-color);
+      }
+
+      section {
+        background-color: var(--card-background);
+        padding: 2rem;
+        border-radius: 20px;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: slideUp var(--animation-duration) ease-out forwards;
+        animation-play-state: paused;
+      }
+
+      section.animate-slide-up {
+        animation-play-state: running;
+      }
+
+      section:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--hover-shadow);
+      }
+
+      h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      h2:hover::after {
+        width: 100%;
+      }
+
+      .error-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .error-card {
+        padding: 1.5rem;
+        background-color: var(--secondary-color);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .error-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: var(--primary-color);
+        box-shadow: var(--hover-shadow);
+      }
+
+      .prevention-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .prevention-item {
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        border-radius: 15px;
+      }
+
+      .prevention-item:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-5px);
+      }
+
+      .icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .prevention-item:hover .icon {
+        transform: scale(1.2) rotate(5deg);
+      }
+
+      .benefits-list {
+        list-style: none;
+      }
+
+      .benefits-list li {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        padding-left: 2.5rem;
+        position: relative;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .benefits-list li:hover {
+        background-color: var(--secondary-color);
+        transform: translateX(10px);
+        padding-left: 3rem;
+      }
+
+      .tips-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .tip {
+        padding: 1.5rem;
+        background-color: var(--secondary-color);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .tip:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: var(--primary-color);
+        box-shadow: var(--hover-shadow);
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: var(--primary-blue);
+        color: white;
+        padding: 3rem 0 1rem;
+        margin-top: auto;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 3rem;
+      }
+
+      .footer-logo img {
+        width: 150px;
+        height: auto;
+      }
+
+      .footer-logo img:hover {
+        transform: scale(1.1);
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .link-group h4 {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .link-group ul li {
+        margin-bottom: 0.9rem;
+      }
+
+      .link-group a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: all var(--transition-fast);
+        padding-bottom: 2px;
+        text-decoration: none;
+      }
+
+      .link-group a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--teal-accent);
+        transition: width var(--transition-normal);
+      }
+
+      .link-group a:hover {
+        color: var(--teal-accent);
+      }
+
+      .link-group a:hover::after {
+        width: 100%;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1.2rem;
+        justify-content: flex-end;
+      }
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: all var(--transition-normal);
+        will-change: transform;
+      }
+
+      .social-icon:hover {
+        background-color: var(--teal-accent);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 180, 179, 0.3);
+      }
+
+      .social-icon img {
+        width: 22px;
+        height: 22px;
+        filter: brightness(0) invert(1);
+      }
+
+      .copyright {
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 2rem;
+        padding-top: 1rem;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .copyright p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-variant: small-caps;
+        letter-spacing: 1px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      @media (max-width: 1200px) {
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .footer-logo {
+          grid-column: 1 / -1;
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .social-links {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .footer-links {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+          padding-top: 90px;
+        }
+
+        header {
+          height: 80px;
+          background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        header .container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        .mobile-menu-toggle {
+          display: block;
+          order: 1;
+        }
+
+        .logo {
+          order: 2;
+        }
+
+        .desktop-nav {
+          display: none;
+        }
+
+        .header-logo {
+          width: 120px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .error-grid,
+        .prevention-list,
+        .tips-container {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 1.5rem;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+        }
+
+        .social-links {
+          justify-content: center;
+          margin-top: 2rem;
+        }
+
+        .medical-image {
+          max-width: 100%;
+        }
+      }
+
+      /* Intersection Observer Animation Trigger */
+      section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Remove White Space */
+      html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        overflow-x: hidden;
+      }
+
+      footer *:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: none !important;
+      }
+
+      html {
+        background-color: var(--primary-blue);
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <div class="container">
-          <div class="logo">
-            <a href="{{ url_for('about') }}">
-              <img src="{{ url_for('static', filename='images/image.png') }}" alt="Getpharmo Logo" class="header-logo">
-            </a>
-          </div>
-          
-          <nav class="desktop-nav">
-            <ul>
-              <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
-              <li><a href="{{ url_for('about') }}">About us</a></li>
-              <li><a href="{{ url_for('index') }}">Services</a></li>
-              <li><a href="{{ url_for('index') }}">Gallery</a></li>
-              <li><a href="{{ url_for('index') }}">Pricing</a></li>
-              <li><a href="{{ url_for('index') }}">Contact Us</a></li>
-            </ul>
-          </nav>
-          <div class="mobile-menu-toggle">
-            <div class="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+      <div class="container">
+        <div class="mobile-menu-toggle">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
-      </header>
-    
-      <nav class="mobile-nav">
-        <ul>
+        <div class="logo">
+          <a href="/">
+            <img src="{{ url_for('static', filename='images/image.png') }}" alt="Logo" class="header-logo">
+          </a>
+        </div>
+        <nav class="desktop-nav">
+          <ul>
           <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
           <li><a href="{{ url_for('about') }}">About us</a></li>
           <li><a href="{{ url_for('index') }}">Services</a></li>
           <li><a href="{{ url_for('index') }}">Gallery</a></li>
           <li><a href="{{ url_for('index') }}">Pricing</a></li>
           <li><a href="{{ url_for('index') }}">Contact Us</a></li>
-        </ul>
-      </nav>
-    
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="mobile-nav">
+      <div class="close-button"></div>
+      <ul>
+        <li><a href="{{ url_for('about') }}" class="active">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About us</a></li>
+        <li><a href="{{ url_for('index') }}">Services</a></li>
+        <li><a href="{{ url_for('index') }}">Gallery</a></li>
+        <li><a href="{{ url_for('index') }}">Pricing</a></li>
+        <li><a href="{{ url_for('index') }}">Contact Us</a></li>
+      </ul>
+    </nav>
+
     <div class="container">
-        <header class="animate__animated animate__fadeIn">
-            <h1>Proper Medication Usage Guide</h1>
-            <div class="hero-image">
-                <img src="{{ url_for('static', filename='images/DRUG.jpg') }}" alt="Medications and pills on blue background" class="main-image">
+      <div class="medical-image-section">
+        <img src = "{{ url_for('static', filename='images/DRUG.jpg') }}" alt="Medical Services" class="medical-image">
+      </div>
+
+      <div class="hero-section">
+        <h1 class="animate-slide-down">Services to become aware of possible medication errors</h1>
+        <p class="subtitle animate-fade-in">We help identify and prevent medication errors through our advanced monitoring system.</p>
+      </div>
+
+      <main>
+        <section class="overview animate-slide-up">
+          <h2>Overview</h2>
+          <p>Medication errors can lead to serious health risks, including ineffective treatment, worsening conditions, or severe side effects. Mistakes in prescribing, dispensing, or consuming medication happen more frequently than expected. Our advanced monitoring system helps identify and prevent such errors, ensuring that every patient receives safe and accurate treatment.</p>
+        </section>
+
+        <section class="error-types animate-slide-up">
+          <h2>Types of Medication Errors</h2>
+          <div class="error-grid">
+            <div class="error-card">
+              <h3>Incorrect Dosage</h3>
+              <p>Taking too much or too little of a medication.</p>
             </div>
-        </header>
-
-        <section class="overview animate__animated animate__fadeInUp">
-            <h2>Overview</h2>
-            <p>Taking medications correctly is just as important as receiving the right prescription. Many patients experience reduced treatment effectiveness due to improper medication use. Our goal is to provide detailed insights into best practices for taking prescribed medicine to ensure maximum health benefits.</p>
-        </section>
-
-        <section class="importance animate__animated animate__fadeInUp">
-            <h2>Why Proper Medication Usage Matters</h2>
-            <div class="checklist">
-                <p>✔️ Ensures medications work as intended.</p>
-                <p>✔️ Reduces side effects and complications.</p>
-                <p>✔️ Prevents resistance in cases like antibiotics.</p>
-                <p>✔️ Enhances the overall effectiveness of treatment.</p>
+            <div class="error-card">
+              <h3>Confusing Similar Drugs</h3>
+              <p>Some medications have similar names or packaging, leading to accidental mix-ups.</p>
             </div>
-        </section>
-
-        <section class="common-mistakes animate__animated animate__fadeInUp">
-            <h2>Common Mistakes in Medication Usage</h2>
-            <div class="interaction-types">
-                <div class="interaction-card">
-                    <div class="card-icon">⏭️</div>
-                    <h3>Skipping Doses</h3>
-                    <p>Missing doses can decrease effectiveness, especially for antibiotics and chronic illness medications.</p>
-                </div>
-                <div class="interaction-card">
-                    <div class="card-icon">🛑</div>
-                    <h3>Stopping Treatment Early</h3>
-                    <p>Many people stop taking medications once they feel better, leading to relapses.</p>
-                </div>
-                <div class="interaction-card">
-                    <div class="card-icon">🧊</div>
-                    <h3>Not Following Storage Instructions</h3>
-                    <p>Some medications lose potency if not stored properly (e.g., insulin must be refrigerated).</p>
-                </div>
-                <div class="interaction-card">
-                    <div class="card-icon">💊</div>
-                    <h3>Crushing or Splitting Pills Incorrectly</h3>
-                    <p>Some medications have coatings to control release and should not be broken.</p>
-                </div>
+            <div class="error-card">
+              <h3>Wrong Administration Method</h3>
+              <p>Medications meant for injection should not be taken orally, and vice versa.</p>
             </div>
-        </section>
-
-        <section class="best-practices animate__animated animate__fadeInUp">
-            <h2>Best Practices for Taking Prescribed Medications</h2>
-            <ul class="fancy-list">
-                <li><strong>Follow the Timing:</strong> Take your medicine at the same time every day to maintain consistency.</li>
-                <li><strong>Use Reminders:</strong> Set alarms or use mobile apps to track your medication schedule.</li>
-                <li><strong>Read Instructions Carefully:</strong> Some medications should be taken with food, while others must be on an empty stomach.</li>
-                <li><strong>Avoid Mixing with Alcohol or Certain Foods:</strong> Check for dietary restrictions related to your prescription.</li>
-                <li><strong>Consult Your Doctor if You Miss a Dose:</strong> Some medications require immediate corrective action if a dose is skipped.</li>
-            </ul>
-        </section>
-
-        <section class="expert-help animate__animated animate__fadeInUp">
-            <h2>How We Help Patients</h2>
-            <p>Our healthcare professionals provide:</p>
-            <div class="checklist highlight">
-                <p>✔️ Personalized medication management plans.</p>
-                <p>✔️ Guidance on best practices for long-term medication use.</p>
-                <p>✔️ Tips to enhance adherence and avoid common mistakes.</p>
+            <div class="error-card">
+              <h3>Failure to Monitor</h3>
+              <p>Some drugs require close monitoring to prevent adverse effects.</p>
             </div>
+          </div>
         </section>
+
+        <section class="prevention animate-slide-up">
+          <h2>How We Help Prevent Medication Errors</h2>
+          <div class="prevention-list">
+            <div class="prevention-item">
+              <span class="icon">🤖</span>
+              <h3>AI-Powered Error Detection</h3>
+              <p>Our system scans prescriptions for potential mistakes, ensuring accuracy.</p>
+            </div>
+            <div class="prevention-item">
+              <span class="icon">👨‍⚕️</span>
+              <h3>Pharmacist Verification</h3>
+              <p>A professional review of medications before dispensing.</p>
+            </div>
+            <div class="prevention-item">
+              <span class="icon">📚</span>
+              <h3>Safe Medication Practices</h3>
+              <p>Educating patients on proper usage to minimize errors.</p>
+            </div>
+            <div class="prevention-item">
+              <span class="icon">🔔</span>
+              <h3>Alerts & Notifications</h3>
+              <p>Reminders to take medications at the right time and track side effects.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="benefits animate-slide-up">
+          <h2>Benefits of Our Service</h2>
+          <ul class="benefits-list">
+            <li>✔️ Reduces the risk of incorrect dosages</li>
+            <li>✔️ Prevents harmful drug interactions</li>
+            <li>✔️ Ensures compliance with prescribed treatments</li>
+            <li>✔️ Enhances patient safety and confidence</li>
+          </ul>
+        </section>
+
+        <section class="tips animate-slide-up">
+          <h2>How You Can Avoid Medication Errors</h2>
+          <div class="tips-container">
+            <div class="tip">
+              <p>Always double-check prescriptions before purchasing medications.</p>
+            </div>
+            <div class="tip">
+              <p>Read instructions carefully and follow the recommended dosage.</p>
+            </div>
+            <div class="tip">
+              <p>Use a pill organizer to keep track of medications.</p>
+            </div>
+            <div class="tip">
+              <p>Ask a pharmacist if you're unsure about how to take your medication properly.</p>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
-    
-</body>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="{{ url_for('static', filename='images/image.png') }}" alt="Logo">
+          </div>
+          <div class="footer-links">
+            <div class="link-group">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="#home">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="link-group">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Data Protection</a></li>
+                <li><a href="#">Compliance</a></li>
+              </ul>
+            </div>
+            <div class="link-group">
+              <h4>Support</h4>
+              <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">System Status</a></li>
+                <li><a href="#">Report an Issue</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-icon"><img src="/facebook-icon.svg" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="/twitter-icon.svg" alt="Twitter"></a>
+            <a href="#" class="social-icon"><img src="/linkedin-icon.svg" alt="LinkedIn"></a>
+            <a href="#" class="social-icon"><img src="/instagram-icon.svg" alt="Instagram"></a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© 2023 Getpharmo Pharmacology Clinic. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simple JavaScript for mobile menu toggle
+      document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+        document.body.classList.toggle('mobile-menu-open');
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.mobile-nav a').forEach(link => {
+        link.addEventListener('click', function() {
+          document.body.classList.remove('mobile-menu-open');
+        });
+      });
+
+      // Close mobile menu when clicking the close button
+      document.querySelector('.mobile-nav .close-button').addEventListener('click', function() {
+        document.body.classList.remove('mobile-menu-open');
+      });
+
+      (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939f17562af61d80',t:'MTc0NjI2ODMxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
+    </script>
+  </body>
 </html>
