@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import pymysql
-from werkzeug.middleware.proxy_fix import ProxyFix  # Handles reverse proxy headers
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 pymysql.install_as_MySQLdb()
 import MySQLdb
@@ -8,11 +8,11 @@ import MySQLdb
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
 
-# Redirect www.getpharmo.com to getpharmo.com
+# Redirect non-www to www
 @app.before_request
-def redirect_www():
-    if request.host.startswith("www."):
-        return redirect(request.url.replace("www.", "", 1), code=301)
+def redirect_to_www():
+    if request.host == "getpharmo.com":
+        return redirect(request.url.replace("://getpharmo.com", "://www.getpharmo.com", 1), code=301)
 
 # MySQL Database Connection
 db = MySQLdb.connect(
